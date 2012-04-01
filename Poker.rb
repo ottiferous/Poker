@@ -10,9 +10,9 @@ class Card
   end
 
   def rank
-    11 if @rank = "J"
-    12 if @rank = "Q"
-    13 if @rank = "K"
+    11 if @rank == "J"
+    12 if @rank == "Q"
+    13 if @rank == "K"
     @rank
   end
 
@@ -70,6 +70,14 @@ class Hand
     @cards << card
   end
 
+  def rank
+    a = []
+    @cards.each do |card|
+      a << card.rank
+    end
+    a.sort
+  end
+
   def flush?
     true if ( (@cards[0].suit == @cards[1].suit) &&
               (@cards[0].suit == @cards[2].suit) &&
@@ -79,11 +87,7 @@ class Hand
   end
 
   def straight?
-    b = []
-    @cards.each do |card|
-      b << card.rank
-    end
-    b.sort
+    b = self.rank
     true if ( b[0] == (b[1]-1) &&
               b[0] == (b[2]-2) &&
               b[0] == (b[3]-3) &&
@@ -91,21 +95,25 @@ class Hand
             )
   end
 
-  def royalflush?
+  def straightflush?
     true if (self.flush? && self.straight?)
   end
 
-  def of_kind?
-    a = []
-    @cards.each do |card|
-      a << card.rank
-    end
-    a.sort
+  def of_a_kind?
+    a = self.rank
     freq = a.inject(Hash.new(0)) { |k,v| k[v] += 1; k}
-    high = a.sort_by { |v| freq[v] }.last
 
+    a.uniq.each do |key|
+      puts freq[key]
+    end
+  end
+
+  def pair?
+    a = self.rank
+    (0..4).each do |x|
+      a.shift if a[x] != a[x+1]
+      
     
-
   end
 
 end
