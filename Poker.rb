@@ -112,8 +112,6 @@ class Hand
     a = self.rank
     (0..4).each do |x|
       a.shift if a[x] != a[x+1]
-      
-    
   end
 
 end
