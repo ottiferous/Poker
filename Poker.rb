@@ -20,14 +20,6 @@ class Card
     @suit[0].chr
   end
 
-  # Only the club works in this set - not sure why
-  def suit_later
-    "\342\231\240" if @suit == "Spade"
-    "\342\231\245" if @suit == "Heart"
-    "\342\231\246" if @suit == "Diamond"
-    "\342\231\243" if @suit == "Club"
-  end
-
   def show
     "#{@rank}-#{suit}"
   end
