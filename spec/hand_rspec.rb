@@ -30,7 +30,17 @@ describe Hand do
   
 
   context 'knows how to find' do
-    it 'the highest value card'
+    it 'the highest value card' do
+      a = [] 
+      a << Card.new(2, :hearts)
+      a << Card.new(4, :diamonds)
+      a << Card.new(13, :spades)
+      a << Card.new(8, :clubs)
+      a << Card.new(4, :diamonds)
+      a.shuffle!
+      expect(Hand.new(a).find_high_card.name).to eql("King of Spades")
+    end
+      
     it 'one pair'
     it 'two pair'
     it 'three of a kind'

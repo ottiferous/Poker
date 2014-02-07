@@ -13,7 +13,7 @@ describe Card do
     expect(card.color).to eql(:red)
   end
   it 'can report its English name' do
-    expect(card.name).to eql("12 of hearts")
+    expect(card.name).to eql("12 of Hearts")
   end
   it 'can report its suit' do
     expect(card.suit).to eql(:hearts)
