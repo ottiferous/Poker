@@ -37,4 +37,6 @@ class Player
     end
   end
   
+  def menu_options
+    
 end

@@ -27,6 +27,4 @@ describe Deck do
   
   it 'may have any positive number of cards'
 
-  
-
 end
